@@ -1,8 +1,10 @@
 package Delivery;
 
-public class CourierDelivery implements Delivery{
+import Flower.Order;
 
-    public boolean prepare(){
+public class CourierDelivery implements DeliveryWay{
+
+    public boolean prepare(Order order){
         System.out.println("Your order is prepared! ");
         return true;
     }

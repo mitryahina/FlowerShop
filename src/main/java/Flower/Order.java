@@ -1,7 +1,8 @@
 package Flower;
 
-import Delivery.Delivery;
+import Delivery.DeliveryWay;
 import Payment.Payment;
+import login.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,16 +13,20 @@ public class Order {
     @Setter @Getter
     private Payment payment;
     @Setter @Getter
-    private Delivery delivery;
+    private DeliveryWay delivery;
 
     public Order() {items = new ArrayList<>();}
 
+    public void attachUser(User user){
+        System.out.println("User succesfully attached");
+    }
+
+    public void deattachUser(User user){}
 
     public boolean process(){
         boolean status = payment.process(getPrice());
-        status = status && delivery.prepare();
+        status = status && delivery.prepare(this);
         return status;
-
     }
 
     public double getPrice(){
